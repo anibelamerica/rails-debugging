@@ -135,3 +135,18 @@ It can also help to run the test suite, since there are tests which are failing 
 
 #### 3. Removing event RSVP
 > When I remove an attendee's RSVP for an event, I get an error and the RSVP is not removed.
+
+##### Repro Steps
+1. Open the website in Chrome v. 71.0.3578.9
+2. Under the Bridge Troll header, click the Sign In button
+3. Enter testing credentials with the following and click Sign In
+  - email: organizer@example.com
+  - password: password
+4. In "Upcoming Events", under "Seeded Test Event", click the Organizer Console button
+5. Under "Tools for before the event", click "Show all Attendee RSVP Details"
+6. Scroll down to RSVP list, and select destroy on any attendee (I selected the first one, Abner Lebsack)
+7. Click "Ok" on alert pop up
+8. Observe error: "ActiveRecord::RecordNotFound"
+
+##### Expected Behavior: Attendee's RSVP should be removed
+##### Observed Behavior: Encounters an error and RSVP is not removed
