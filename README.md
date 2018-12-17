@@ -91,6 +91,22 @@ It can also help to run the test suite, since there are tests which are failing 
 #### 1. Operating System
 > When I look at the Organizer Console for an event, the Operating System Breakdown table has difficult-to-read percentages listed for each OS.
 
+##### Repro Steps
+1. Open the website in Chrome v. 71.0.3578.9
+2. Under the Bridge Troll header, click the Sign In button
+3. Enter testing credentials with the following and click Sign In
+  - email: organizer@example.com
+  - password: password
+4. In "Upcoming Events", under "Seeded Test Event", click the Organizer Console button
+5. Scroll down to Operating System Breakdown table
+6. Observe the percentages under "Count" column are in parenthesis with around 14 significant digits
+
+##### Expected Behavior: Percentages should be displayed with 1 significant digit
+##### Observed Behavior: Percentages are displayed with around 14 significant digits
+
+
+
+
 #### 2. Saving event as draft
 > When I save an event as a draft, I get a 500 error even though I have filled out all of the required fields.
 
