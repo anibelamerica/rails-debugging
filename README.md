@@ -104,11 +104,34 @@ It can also help to run the test suite, since there are tests which are failing 
 ##### Expected Behavior: Percentages should be displayed with 1 significant digit
 ##### Observed Behavior: Percentages are displayed with around 14 significant digits
 
-
-
-
 #### 2. Saving event as draft
 > When I save an event as a draft, I get a 500 error even though I have filled out all of the required fields.
+
+##### Repro Steps
+1. Open the website in Chrome v. 71.0.3578.9
+2. Under the Bridge Troll header, click the Sign In button
+3. Enter testing credentials with the following and click Sign In
+  - email: organizer@example.com
+  - password: password
+4. Scroll down to the "Get Involved" section, click the "Organize Event" button
+5. Scroll down to the "Ready to create your Event? Hold on a second..." section.
+6. Enter/Select the following fields:
+  - Under "Organizer Information", enter "organizer@example.com"
+  - Under "Basic Information":
+    - Under "What Chapter is hosting? (required)", select "RailsBridge Seattle"
+    - Under "What population is this workshop reaching out to? (required)", enter 10
+  - Under "Event Description & Page Info":
+    - Under "Event Title (required)", enter "Test Event"
+    - Under "Event Location", select "Sutro Tower"
+    - Under "Sessions", for "Session Name (required)", enter "Test session name"
+  - Under "RSVP info":
+    - Under "Student RSVP limit (required)", enter 20
+  -  Check the box next to "I accept the Code of Conduct and will communicate it at the beginning of the event."
+7. Click "Save Draft"
+8. Observe that we encounter a "NoMethodError", undefined method 'empty' for NilClass
+
+##### Expected Behavior: Draft should be saved with a flash message saying "Draft saved!"
+##### Observed Behavior: Encounters a NoMethodError in index.html.erb
 
 #### 3. Removing event RSVP
 > When I remove an attendee's RSVP for an event, I get an error and the RSVP is not removed.
